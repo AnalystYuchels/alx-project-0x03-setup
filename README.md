@@ -1,4 +1,4 @@
-# alx-project-0x02-setup
+# Reactify TS: Mastering Advanced TypeScript in React
 
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![TypeScript](https://img.shields.io/badge/language-TypeScript-blue)
