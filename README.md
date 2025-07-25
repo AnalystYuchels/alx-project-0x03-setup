@@ -1,137 +1,159 @@
-# ALX Project 0x03 - Shared Layouts in Next.js
+# alx-project-0x02-setup
 
-[![Next.js](https://img.shields.io/badge/Next.js-13+-blue.svg)](https://nextjs.org/)
-[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-%5E3.x-blue)](https://tailwindcss.com/)
-[![React Icons](https://img.shields.io/badge/React%20Icons-%5E4.10.1-blue)](https://react-icons.github.io/react-icons/)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![TypeScript](https://img.shields.io/badge/language-TypeScript-blue)
+![TailwindCSS](https://img.shields.io/badge/styling-TailwindCSS-38B2AC)
+![Next.js](https://img.shields.io/badge/framework-Next.js-black)
+![Status](https://img.shields.io/badge/status-In%20Progress-yellow)
 
-## 📌 Objective
+## 📚 Project Overview
 
-In most real-world applications, multiple pages share common elements like headers and footers. This project demonstrates how to avoid redundancy using the **DRY (Don't Repeat Yourself)** principle by creating reusable layout components in a Next.js app.
+This project is a user listing app built with **Next.js**, **TypeScript**, and **TailwindCSS**. It fetches and displays user data from an external API using reusable components and organized modular files.
+
+The goal is to demonstrate key frontend concepts, such as component reusability, API data fetching, and strict typing in TypeScript, within a modern web development stack.
 
 
-## 🚀 Getting Started
+## 🎯 Learning Objectives
 
-### 1. Clone the repository
+- Understand the file structure and organization of a Next.js TypeScript project.
+- Build and reuse functional components like cards and layouts.
+- Interface with APIs using `getServerSideProps` for data fetching.
+- Apply strict typing with custom interfaces (`UserProps`, etc.).
+- Use TailwindCSS for responsive and modern UI styling.
+- Handle layout separation (header/footer/main) using layout wrappers.
+
+
+## 🧱 Project Structure
 
 ```bash
-git clone https://github.com/AnalystYuchels/alx-project-0x03-setup.git
-cd alx-project-0x03-setup
+.
+├── components/               # Reusable UI components
+│   ├── common/              # Shared elements across pages (e.g. UserCard)
+│   └── layout/              # Layout-related components like Header, Footer
+│
+├── interfaces/              # TypeScript interfaces for props & data
+│   └── index.ts             # Contains UserProps interface for typing user data
+│
+├── pages/                   # Next.js pages
+│   ├── _app.tsx            # Entry point for global styles/wrappers
+│   └── users.tsx           # Main page that displays users fetched from API
+│
+├── public/                  # Static assets like images
+│
+├── styles/                  # TailwindCSS and global styles (if needed)
+│   └── globals.css
+│
+├── tsconfig.json            # TypeScript config
+├── tailwind.config.ts       # Tailwind configuration
+└── next.config.js           # Next.js configuration
 ````
 
-### 2. Install dependencies
+
+## 📦 Setup Instructions
+
+1. **Clone the Repository**
+
+```bash
+git clone https://github.com/AnalystYuchels/alx-project-0x02-setup.git
+cd alx-project-0x02-setup
+```
+
+2. **Install Dependencies**
 
 ```bash
 npm install
+# or
+yarn
 ```
 
-### 3. Run the development server
+3. **Run the Development Server**
 
 ```bash
 npm run dev
+# or
+yarn dev
 ```
 
-Open your browser and visit:
-👉 [http://localhost:3000](http://localhost:3000)
+4. Open [http://localhost:3000/users](http://localhost:3000/users) in your browser to view the app.
 
 
-## 🏗️ Project Structure
+## 🧠 How It Works
+
+* `interfaces/index.ts`: Defines a `UserProps` interface which strongly types each user’s data (name, email, address).
+* `components/common/UserCard.tsx`: A reusable component that displays individual user data in a styled card.
+* `pages/users.tsx`:
+
+  * Uses `getServerSideProps()` to fetch user data from an external API.
+  * Maps over the fetched users and displays each in a `UserCard`.
+
+
+## 🌟 Features
+
+* Responsive UI using TailwindCSS utility classes.
+* Clear type safety with TypeScript interfaces.
+* Modular folder structure separating concerns.
+* Reusable and scalable component design.
+* API integration via `getServerSideProps` for SSR.
+* Easy customization and extension for more features.
+
+
+## 🧪 Testing the Application
+
+### Core Functionality Tests:
+
+Layout Consistency: Verify Header and Footer appear on all pages
+Button Interactions: Test all button variants and click handlers
+Font Loading: Confirm Montserrat font is applied globally
+Routing: Test navigation between pages
+404 Handling: Visit non-existent routes to see custom error page
+Responsive Design: Test on different screen sizes
+
+### Component Tests:
 
 ```bash
-alx-project-0x03/
-│
-├── components/
-│   ├── common/
-│   │   └── Button.tsx             # Reusable button component with props
-│   └── layouts/
-│       ├── Header.tsx             # Top navigation with Sign In/Up buttons
-│       ├── Footer.tsx             # Bottom section with links and social icons
-│       └── Layout.tsx             # Wraps all pages with Header and Footer
-│
-├── interfaces/
-│   └── index.ts                   # All shared TypeScript interfaces
-│
-├── pages/
-│   ├── 404.tsx                    # Custom 404 error page
-│   └── index.tsx                  # Landing page with imperative routing
-│
-├── public/                        # Static files (e.g. favicon)
-│
-├── styles/
-│   └── globals.css                # TailwindCSS setup and Google Fonts
-│
-├── tsconfig.json                  # TypeScript configuration
-└── next.config.js                 # Next.js configuration
+# Test button variants
+- Click the "Sign In" and "Sign Up" buttons in the header
+- Test navigation buttons on the landing page
+- Verify hover effects and transitions
+
+# Test routing
+- Navigate to /unknown-page to see 404
+- Use "Go Back Home" link on 404 page
+- Test browser back/forward navigation
 ```
 
 
-## ✨ Features
+## 🛠️ Tools Used
 
-* **Shared Layouts** using `Layout.tsx`
-* **Modular components** (Header, Footer, Button)
-* **Google Fonts** integrated (Montserrat)
-* **Imperative Routing** using `useRouter` hook
-* **Type-safe Interfaces** managed under `/interfaces`
-* **Custom 404 Page** with a fun message
-* **TailwindCSS Styling** for fast and clean UI
+* **Next.js** – React framework for building server-rendered apps.
+* **TypeScript** – For strict typing and interface definitions.
+* **TailwindCSS** – For styling components using utility classes.
+* **Fetch API** – For getting user data from an external endpoint.
 
 
-## 🧩 Components Breakdown
+## 🚀 Deployment
 
-### `Button.tsx`
+To deploy this project using **Vercel**:
 
-* Reusable with support for custom text, size, color, and actions.
-
-### `Header.tsx`
-
-* Fixed top navigation with logo and Sign In/Up buttons.
-
-### `Footer.tsx`
-
-* Contains description, useful links, and social icons (Facebook, Twitter, Instagram).
-
-### `Layout.tsx`
-
-* Wraps each page with `<Header />`, `<Footer />`, and `<main>{children}</main>`.
+1. Push your code to GitHub.
+2. Visit [vercel.com](https://vercel.com).
+3. Link your GitHub repository.
+4. Set up build command (default is fine: `npm run build`) and root directory.
+5. Click **Deploy**.
 
 
-## 🛠️ Tech Stack
+## 🧾 License
 
-* [Next.js](https://nextjs.org/)
-* [React](https://reactjs.org/)
-* [TypeScript](https://www.typescriptlang.org/)
-* [TailwindCSS](https://tailwindcss.com/)
-* [React Icons](https://react-icons.github.io/react-icons/)
-* [Google Fonts - Montserrat](https://fonts.google.com/specimen/Montserrat)
+This project is licensed under the **MIT License** – feel free to use and modify it.
 
 
-## 🧪 Testing
+## ✅ To Do
 
-After setup, run:
-
-```bash
-npm run dev
-```
-
-* Visit `/` to see the welcome page.
-* Try navigating using the buttons — you’ll hit a custom 404 page since routes are placeholders.
-* Visit `/unknown-pathname` to preview the custom error screen.
-
-
-## ✅ Learning Outcomes
-
-* DRY principle using layout components
-* Building reusable UI components
-* Implementing imperative navigation
-* Managing global styles and fonts
-* Handling 404 errors gracefully
-* Organizing TypeScript interfaces
-
-
-## 👨‍💻 Author
-
-**Uchechi Uche** — [@AnalystYuchels](https://github.com/AnalystYuchels)
-
-
-## 📄 License
-
-This project is part of the **ALX Frontend Program** and is intended for educational purposes.
+* [x] Set up folder structure
+* [x] Add TailwindCSS and TypeScript support
+* [x] Create `UserProps` interface
+* [x] Build reusable `UserCard` component
+* [x] Fetch and display API data on `/users` page
+* [ ] Add loading/error states
+* [ ] Implement pagination or filtering
+* [ ] Add dark mode
