@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { PageRouteProps } from "@/interface";
 
 export interface PageRouteProps {
   pageRoute: string;
